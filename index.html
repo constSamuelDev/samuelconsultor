@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Minha Casa Minha Vida</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Seu Nome</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>UM CASO DE AMOR ETERNO...</h1>
+                <p>Um novo conceito no Minha Casa Minha Vida: apartamentos mais amplos, com duas varandas e suíte, oferecendo muito mais espaço e conforto para sua família.</p>
+                <button class="cta-button">Fale Comigo</button>
+            </div>
+            <div class="hero-images">
+                <img src="./Screenshot_1.png" alt="Família feliz em casa" class="main-image">
+                <img src="./Screenshot_2.png" alt="Conceito Minha Casa Minha Vida" class="secondary-image">
+            </div>
+        </section>
+
+        <section id="sobre" class="sobre">
+            <h2>Quem Sou?</h2>
+            <p>Consultor especializado em ajudar famílias a conquistarem seu imóvel através do programa Minha Casa Minha Vida. Saia já do aluguel por um preço totalmente acessível! Venha conosco nessa jornada.</p>
+        </section>
+
+        <section id="servicos" class="servicos">
+            <h2>Serviços</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Análise de Perfil</h3>
+                    <p>Avaliação completa e personalizada da sua situação financeira para encontrar a melhor opção dentro do programa Minha Casa Minha Vida.</p>
+                    <a href="#contato" class="card-button">Saiba Mais</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📄</div>
+                    <h3>Documentação</h3>
+                    <p>Auxílio completo com toda a documentação necessária, simplificando o processo e garantindo agilidade na aprovação.</p>
+                    <a href="#contato" class="card-button">Saiba Mais</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Acompanhamento</h3>
+                    <p>Suporte personalizado em todas as etapas do processo, desde a escolha do imóvel até a entrega das chaves.</p>
+                    <a href="#contato" class="card-button">Saiba Mais</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="contato">
+            <h2>Faça sua simulação!</h2>
+            <form action="https://formsubmit.co/samoelvieiradesouza@gmail.com" method="POST">
+                <!-- Campo honeypot para evitar spam -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <!-- Desabilitar captcha -->
+                <input type="hidden" name="_captcha" value="false">
+                
+                <!-- Página de agradecimento personalizada -->
+                <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+
+                <!-- Seus campos do formulário -->
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="renda">Renda Mensal (R$)</label>
+                    <input type="number" name="renda" id="renda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_renda">Tipo de Renda</label>
+                    <select name="tipo_renda" id="tipo_renda" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="CLT">CLT</option>
+                        <option value="Autônomo">Autônomo</option>
+                        <option value="Empresário">Empresário</option>
+                        <option value="Aposentado">Aposentado/Pensionista</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="dependentes">Número de Dependentes</label>
+                    <input type="number" name="dependentes" id="dependentes" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Possui mais de 3 anos de carteira assinada?</label>
+                    <div class="radio-group">
+                        <input type="radio" name="carteira_assinada" id="carteira_sim" value="Sim" required>
+                        <label for="carteira_sim">Sim</label>
+                        <input type="radio" name="carteira_assinada" id="carteira_nao" value="Não">
+                        <label for="carteira_nao">Não</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contato">Email ou WhatsApp para contato</label>
+                    <input type="text" name="contato" id="contato" required>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Consultoria MCMV. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
