@@ -45,19 +45,19 @@
                 <div class="card">
                     <div class="card-icon">📋</div>
                     <h3>Análise Personalizada</h3>
-                    <p>Vamos avaliar sua situação...</p>
+                    <p>Vamos avaliar juntos sua situação atual e descobrir as melhores condições para você conquistar seu imóvel. Uma análise completa e gratuita para entender suas necessidades!</p>
                     <a href="#contato" class="card-button">Quero uma análise</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">📄</div>
                     <h3>Suporte com Documentos</h3>
-                    <p>Deixa comigo!...</p>
+                    <p>Não se preocupe com a burocracia! Cuidamos de toda a documentação necessária, desde a aprovação do financiamento até a entrega das chaves.</p>
                     <a href="#contato" class="card-button">Preciso de ajuda</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">🤝</div>
                     <h3>Acompanhamento Total</h3>
-                    <p>Estarei ao seu lado...</p>
+                    <p>Do início ao fim, estaremos ao seu lado em cada etapa. Visitas aos imóveis, negociações, documentação e muito mais. Seu sonho é nossa prioridade!</p>
                     <a href="#contato" class="card-button">Vamos conversar</a>
                 </div>
             </div>
@@ -73,7 +73,13 @@
 
                 <div class="form-group">
                     <label for="nascimento">Qual sua data de nascimento?</label>
-                    <input type="date" id="nascimento" name="nascimento" required>
+                    <input type="date" 
+                           id="nascimento" 
+                           name="nascimento" 
+                           required
+                           pattern="\d{2}/\d{2}/\d{4}"
+                           min="1940-01-01"
+                           max="2005-12-31">
                 </div>
 
                 <div class="form-group">
