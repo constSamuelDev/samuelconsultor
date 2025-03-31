@@ -1,56 +1,77 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Rolagem suave para links de navegação
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Inicialização do EmailJS
     emailjs.init("g1c7VypWC9g4u7QPl");
 
-    // Tratamento do formulário de contato
-    const formularioContato = document.getElementById('formulario-contato');
-    if (formularioContato) {
-        formularioContato.addEventListener('submit', function(e) {
+    const navegacaoSuave = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(link.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    };
+
+    const mostrarNotificacao = (mensagem, sucesso = true) => {
+        Toastify({
+            text: mensagem,
+            duration: 5000,
+            gravity: "top",
+            position: "center",
+            style: {
+                background: sucesso ? "#48bb78" : "#e53e3e",
+                borderRadius: "10px",
+                padding: "1rem",
+                fontSize: "1.1rem"
+            }
+        }).showToast();
+    };
+
+    const gerenciarFormulario = () => {
+        const formulario = document.getElementById('formulario-contato');
+        if (!formulario) return;
+
+        const campoQtdDependentes = document.getElementById('quantidade_dependentes');
+        const inputQtdDependentes = document.getElementById('dependentes');
+
+        document.querySelectorAll('input[name="tem_dependentes"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const temDependentes = radio.value === 'Sim';
+                campoQtdDependentes.style.display = temDependentes ? 'flex' : 'none';
+                inputQtdDependentes.required = temDependentes;
+                if (!temDependentes) inputQtdDependentes.value = '';
+            });
+        });
+
+        formulario.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const formData = {
+            const dadosFormulario = {
                 to_name: "Samuel",
                 from_name: this.nome.value,
                 message: `
                     Nome: ${this.nome.value}
-                    Renda: R$ ${this.renda.value}
+                    Data de Nascimento: ${this.nascimento.value}
+                    Renda Mensal: R$ ${this.renda.value}
                     Tipo de Renda: ${this.tipo_renda.value}
-                    Dependentes: ${this.dependentes.value}
-                    Carteira Assinada +3 anos: ${this.carteira_assinada.value}
+                    Possui Dependentes: ${this.tem_dependentes.value}
+                    ${this.tem_dependentes.value === 'Sim' ? `Quantidade de Dependentes: ${this.dependentes.value}` : ''}
+                    Experiência CLT +3 anos: ${this.carteira_assinada.value}
                     Contato: ${this.contato.value}
                 `
             };
 
-            emailjs.send('service_z2zcv1n', 'template_4xe9kbz', formData)
-                .then(function() {
-                    alert('Mensagem enviada com sucesso!');
-                    formularioContato.reset();
-                }, function(error) {
-                    alert('Erro ao enviar mensagem. Por favor, tente novamente.');
-                    console.error('Erro:', error);
-                });
-        });
-    }
-
-    // Animação de scroll para elementos
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section');
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.75) {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
+            try {
+                await emailjs.send('service_z2zcv1n', 'template_4xe9kbz', dadosFormulario);
+                mostrarNotificacao('Que ótimo! Recebemos seus dados e logo entraremos em contato para ajudar você a conquistar seu sonho! 🏠');
+                formulario.reset();
+            } catch (erro) {
+                console.error('Erro:', erro);
+                mostrarNotificacao('Ops! Algo deu errado no envio. Poderia tentar novamente? 🙏', false);
             }
         });
-    });
+    };
+
+    navegacaoSuave();
+    gerenciarFormulario();
 });

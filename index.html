@@ -6,6 +6,8 @@
     <title>Consultoria Minha Casa Minha Vida</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body>
     <header>
@@ -23,8 +25,8 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-content">
-                <h1>UM CASO DE AMOR ETERNO...</h1>
-                <p>Um novo conceito no Minha Casa Minha Vida: apartamentos mais amplos, com duas varandas e suíte, oferecendo muito mais espaço e conforto para sua família.</p>
+                <h1>Realize o sonho da casa própria!</h1>
+                <p>Com as novas condições do Minha Casa Minha Vida, você pode conquistar seu imóvel com parcelas que cabem no seu bolso! Taxas de juros reduzidas, subsídios de até R$ 55.000 e entrada facilitada. Não deixe para depois, vamos juntos transformar seu sonho em realidade.</p>
             </div>
             <div class="hero-images">
                 <img src="./Screenshot_1.png" alt="Família feliz em casa" class="main-image">
@@ -33,98 +35,93 @@
         </section>
 
         <section id="sobre" class="sobre">
-            <h2>Quem Sou?</h2>
-            <p>Consultor especializado em ajudar famílias a conquistarem seu imóvel através do programa Minha Casa Minha Vida. Saia já do aluguel por um preço totalmente acessível! Venha conosco nessa jornada.</p>
+            <h2>Olá! Prazer em te conhecer</h2>
+            <p>Sou especialista em realizar sonhos através do programa Minha Casa Minha Vida...</p>
         </section>
 
         <section id="servicos" class="servicos">
-            <h2>Serviços</h2>
+            <h2>Como posso te ajudar?</h2>
             <div class="service-cards">
                 <div class="card">
                     <div class="card-icon">📋</div>
-                    <h3>Análise de Perfil</h3>
-                    <p>Avaliação completa e personalizada da sua situação financeira para encontrar a melhor opção dentro do programa Minha Casa Minha Vida.</p>
-                    <a href="#contato" class="card-button">Saiba Mais</a>
+                    <h3>Análise Personalizada</h3>
+                    <p>Vamos avaliar sua situação...</p>
+                    <a href="#contato" class="card-button">Quero uma análise</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">📄</div>
-                    <h3>Documentação</h3>
-                    <p>Auxílio completo com toda a documentação necessária, simplificando o processo e garantindo agilidade na aprovação.</p>
-                    <a href="#contato" class="card-button">Saiba Mais</a>
+                    <h3>Suporte com Documentos</h3>
+                    <p>Deixa comigo!...</p>
+                    <a href="#contato" class="card-button">Preciso de ajuda</a>
                 </div>
                 <div class="card">
                     <div class="card-icon">🤝</div>
-                    <h3>Acompanhamento</h3>
-                    <p>Suporte personalizado em todas as etapas do processo, desde a escolha do imóvel até a entrega das chaves.</p>
-                    <a href="#contato" class="card-button">Saiba Mais</a>
+                    <h3>Acompanhamento Total</h3>
+                    <p>Estarei ao seu lado...</p>
+                    <a href="#contato" class="card-button">Vamos conversar</a>
                 </div>
             </div>
         </section>
 
         <section id="contato" class="contato">
-            <h2>Faça sua simulação!</h2>
+            <h2>Vamos realizar seu sonho?</h2>
             <form id="formulario-contato">
-                <!-- Campo honeypot para evitar spam -->
-                <input type="text" name="_honey" style="display:none">
-                
-                <!-- Desabilitar captcha -->
-                <input type="hidden" name="_captcha" value="false">
-                
-                <!-- Página de agradecimento personalizada -->
-                <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
-
-                <!-- Seus campos do formulário -->
                 <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" name="nome" id="nome" required>
+                    <label for="nome">Como podemos te chamar? 😊</label>
+                    <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="renda">Renda Mensal (R$)</label>
-                    <input type="number" name="renda" id="renda" required>
+                    <label for="nascimento">Qual sua data de nascimento?</label>
+                    <input type="date" id="nascimento" name="nascimento" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="tipo_renda">Tipo de Renda</label>
-                    <select name="tipo_renda" id="tipo_renda" required>
-                        <option value="">Selecione uma opção</option>
-                        <option value="CLT">CLT</option>
-                        <option value="Autônomo">Autônomo</option>
-                        <option value="Empresário">Empresário</option>
-                        <option value="Aposentado">Aposentado/Pensionista</option>
-                        <option value="Outros">Outros</option>
+                    <label for="renda">Quanto você recebe mensalmente? 💰</label>
+                    <input type="number" id="renda" name="renda" placeholder="Sua renda mensal" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_renda">Como você trabalha atualmente? 💼</label>
+                    <select id="tipo_renda" name="tipo_renda" required>
+                        <option value="">Escolha uma opção...</option>
+                        <option value="CLT">Carteira Assinada (CLT)</option>
+                        <option value="Autônomo">Trabalho por Conta Própria</option>
+                        <option value="Empresário">Tenho Empresa</option>
+                        <option value="Outro">Outro Tipo</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="dependentes">Número de Dependentes</label>
-                    <input type="number" name="dependentes" id="dependentes" min="0" required>
+                    <label>Você tem filhos ou dependentes? 👨‍👩‍👧‍👦</label>
+                    <div class="radio-group">
+                        <input type="radio" id="tem_dep_sim" name="tem_dependentes" value="Sim" required>
+                        <label for="tem_dep_sim">Sim, tenho</label>
+                        <input type="radio" id="tem_dep_nao" name="tem_dependentes" value="Não">
+                        <label for="tem_dep_nao">Não tenho</label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="quantidade_dependentes" style="display: none;">
+                    <label for="dependentes">Quantos dependentes você tem?</label>
+                    <input type="number" id="dependentes" name="dependentes" min="1" placeholder="Número de dependentes">
                 </div>
 
                 <div class="form-group">
-                    <label>Possui mais de 3 anos de carteira assinada?</label>
+                    <label>Já trabalhou com carteira assinada por mais de 3 anos? (Seguidos ou não) ⭐</label>
                     <div class="radio-group">
-                        <input type="radio" name="carteira_assinada" id="carteira_sim" value="Sim" required>
-                        <label for="carteira_sim">Sim</label>
-                        <input type="radio" name="carteira_assinada" id="carteira_nao" value="Não">
-                        <label for="carteira_nao">Não</label>
+                        <input type="radio" id="carteira_sim" name="carteira_assinada" value="Sim" required>
+                        <label for="carteira_sim">Sim, tenho experiência</label>
+                        <input type="radio" id="carteira_nao" name="carteira_assinada" value="Não">
+                        <label for="carteira_nao">Ainda não</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="contato">Email ou WhatsApp para contato</label>
-                    <input type="text" name="contato" id="contato" required>
+                    <label for="contato">Qual seu melhor número para contato? 📱</label>
+                    <input type="tel" id="contato" name="contato" placeholder="(XX) XXXXX-XXXX" required>
                 </div>
 
-                <button type="submit">Enviar</button>
+                <button type="submit">Quero Realizar Meu Sonho! 🏠</button>
             </form>
         </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Consultoria MCMV. Todos os direitos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
