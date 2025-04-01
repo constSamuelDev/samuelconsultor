@@ -72,13 +72,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="nascimento">Qual sua data de nascimento?</label>
-                    <input type="date" 
-                           id="nascimento" 
-                           name="nascimento" 
-                           min="1940-01-01"
-                           max="2007-12-31"
-                           required>
+                    <label>Qual sua data de nascimento?</label>
+                    <div class="date-inputs">
+                        <input type="number" 
+                               id="dia" 
+                               name="dia" 
+                               placeholder="Dia" 
+                               min="1" 
+                               max="31" 
+                               required>
+                        <input type="number" 
+                               id="mes" 
+                               name="mes" 
+                               placeholder="Mês" 
+                               min="1" 
+                               max="12" 
+                               required>
+                        <input type="number" 
+                               id="ano" 
+                               name="ano" 
+                               placeholder="Ano" 
+                               min="1940" 
+                               max="2007" 
+                               required>
+                    </div>
                 </div>
 
                 <div class="form-group">
