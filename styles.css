@@ -511,8 +511,20 @@ button[type="submit"] {
 .date-inputs input {
     width: 33%;
     text-align: center;
+    padding: 0.8rem;
 }
 
+@media (max-width: 480px) {
+    .date-inputs {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .date-inputs input {
+        width: 100%;
+        padding: 1rem;
+    }
+}
 .date-inputs input::-webkit-inner-spin-button,
 .date-inputs input::-webkit-outer-spin-button {
     -webkit-appearance: none;
