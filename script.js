@@ -46,12 +46,17 @@ document.addEventListener('DOMContentLoaded', function() {
         formulario.addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            const dia = this.dia.value;
+            const mes = this.mes.value;
+            const ano = this.ano.value;
+            const dataNascimento = `${dia}/${mes}/${ano}`;
+
             const dadosFormulario = {
                 to_name: "Samuel",
                 from_name: this.nome.value,
                 message: `
                     Nome: ${this.nome.value}
-                    Data de Nascimento: ${this.nascimento.value}
+                    Data de Nascimento: ${dataNascimento}
                     Renda Mensal: R$ ${this.renda.value}
                     Tipo de Renda: ${this.tipo_renda.value}
                     Possui Dependentes: ${this.tem_dependentes.value}
@@ -62,7 +67,8 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             try {
-                await emailjs.send('service_z2zcv1n', 'template_4xe9kbz', dadosFormulario);
+                const response = await emailjs.send('service_z2zcv1n', 'template_4xe9kbz', dadosFormulario);
+                console.log('Sucesso:', response);
                 mostrarNotificacao('Que ótimo! Recebemos seus dados e logo entraremos em contato para ajudar você a conquistar seu sonho! 🏠');
                 formulario.reset();
             } catch (erro) {
