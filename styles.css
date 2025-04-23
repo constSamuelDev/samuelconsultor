@@ -301,9 +301,34 @@ nav {
 
 .servicos {
     background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 100%);
-    padding: 8rem 5%;
+    padding: 8rem 1rem;
 }
 
+@media (max-width: 768px) {
+    .service-cards {
+        grid-template-columns: 1fr;
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .card {
+        padding: 2.5rem 2rem;
+        margin: 0 auto 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .servicos {
+        padding: 8rem 0.5rem;
+    }
+    
+    .service-cards {
+        width: 95%;
+    }
+}
 .servicos h2 {
     font-size: 2.8rem;
     color: var(--primary-blue);
@@ -362,6 +387,29 @@ nav {
 @media (max-width: 768px) {
     .service-cards {
         grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .card {
+        padding: 2.5rem 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .card-button {
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-cards {
+        padding: 0 0.5rem;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
     }
 }
 
