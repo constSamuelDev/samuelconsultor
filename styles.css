@@ -6,20 +6,66 @@
 
 :root {
     --primary-blue: #003B71;
-    --secondary-blue: #0066cc;
-    --light-blue: #e6f0ff;
+    --secondary-blue: #0066CC;
     --white: #ffffff;
+    --text-dark: #333333;
     --light-gray: #f5f5f5;
-    --text-dark: #1A2A3A;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     background-color: var(--white);
     color: #333;
 }
 
+.hero-content h1 {
+    font-size: 4.5rem;
+    color: var(--primary-blue);
+    font-weight: 800;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+    position: relative;
+    letter-spacing: -1px;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin: 2rem auto;
+    line-height: 1.6;
+    max-width: 700px;
+    font-weight: 400;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links li a:hover {
+    color: var(--secondary-blue);
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--secondary-blue);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links li a:hover::after {
+    width: 80%;
+}
 .hero {
     min-height: 100vh;
     display: grid;
@@ -119,17 +165,57 @@ nav {
 .nav-links li a:hover {
     color: var(--secondary-blue);
 }
-
 .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 45% 55%;
+    display: flex;
     align-items: center;
+    justify-content: center;
     padding: 6rem 5% 2rem;
-    background: linear-gradient(to right, var(--white) 60%, var(--light-blue) 40%);
+    background: linear-gradient(35deg, var(--white) 50%, var(--light-blue) 50%);
+}
+
+.hero-content {
+    max-width: 800px;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    color: var(--primary-blue);
+    font-weight: 800;
+    margin-bottom: 3rem;
+    line-height: 1.1;
     position: relative;
 }
 
+.hero-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: var(--secondary-blue);
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin: 2rem auto;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+}
 .hero-content {
     padding-right: 3rem;
 }
@@ -227,7 +313,7 @@ nav {
 
 .service-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -236,16 +322,47 @@ nav {
 
 .card {
     background: var(--white);
-    padding: 3.5rem 2.5rem;
+    padding: 3rem 2rem;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: all 0.4s ease;
     border: none;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--white);
+    margin-top: auto;
+    width: 100%;
+}
+
+.card-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,59,113,0.2);
+}
+
+@media (max-width: 992px) {
+    .service-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-cards {
+        grid-template-columns: 1fr;
+    }
 }
 
 .card:hover {
@@ -560,4 +677,46 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     input[type="date"] {
         min-height: 3.5rem;
     }
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+.card-button {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: var(--white);
+    box-shadow: 0 5px 15px rgba(0,59,113,0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.card-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,59,113,0.3);
+}
+
+.card-button-outline {
+    background: transparent;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    box-shadow: none;
+}
+
+.card-button-outline:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(0,59,113,0.3);
 }

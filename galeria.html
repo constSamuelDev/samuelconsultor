@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Empreendimento</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="galeria.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Samuel Vieira</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="galeria-wrapper">
+        <section class="galeria-hero">
+            <h1>Conheça seu novo lar</h1>
+            <p>Explore cada detalhe do seu futuro apartamento</p>
+        </section>
+
+        <section class="galeria-grid">
+            
+            <div class="galeria-item" data-speed="1.2">
+                <img src="imagem2.jpeg" alt="Área comum">
+                <div class="item-info">
+                    <h3>Área de Lazer</h3>
+                    <p>Espaço para toda família</p>
+                </div>
+            </div>
+
+            <div class="galeria-item" data-speed="1.15">
+                <img src="imagem3.jpeg" alt="Interior do apartamento">
+                <div class="item-info">
+                    <h3>Acabamento Premium</h3>
+                    <p>Detalhes que fazem a diferença</p>
+                </div>
+            </div>
+
+            <div class="galeria-item" data-speed="1.05">
+                <img src="imagem4.jpeg" alt="Área externa">
+                <div class="item-info">
+                    <h3>Área Externa</h3>
+                    <p>Momentos de lazer ao ar livre</p>
+                </div>
+            </div>
+
+            <div class="galeria-item" data-speed="1.1">
+                <img src="imagem5.jpeg" alt="Piscina">
+                <div class="item-info">
+                    <h3>Piscina</h3>
+                    <p>Diversão garantida</p>
+                </div>
+            </div>
+
+            <div class="galeria-item" data-speed="1.2">
+                <img src="imagem6.jpeg" alt="Academia">
+                <div class="item-info">
+                    <h3>Deck molhado</h3>
+                    <p>Muito mais conforto ao curtir as piscinas</p>
+                </div>
+            </div>
+
+            <div class="galeria-item" data-speed="1.15">
+                <img src="imagem7.jpeg" alt="Salão de festas">
+                <div class="item-info">
+                    <h3>Varanda</h3>
+                    <p>Vista privilegiada</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelectorAll('.galeria-item').forEach((item, index) => {
+            item.style.setProperty('--order', index + 1);
+        });
+
+        let isHovering = false;
+
+        document.querySelectorAll('.galeria-item').forEach(item => {
+            item.addEventListener('mouseenter', () => isHovering = true);
+            item.addEventListener('mouseleave', () => {
+                isHovering = false;
+                item.style.transform = '';
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isHovering) {
+                const items = document.querySelectorAll('.galeria-item');
+                const xMiddle = window.innerWidth / 2;
+                const yMiddle = window.innerHeight / 2;
+                
+                items.forEach(item => {
+                    const speed = item.getAttribute('data-speed');
+                    const x = (e.clientX - xMiddle) * speed / 100;
+                    const y = (e.clientY - yMiddle) * speed / 100;
+                    
+                    item.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.galeria-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
